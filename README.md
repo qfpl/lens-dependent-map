@@ -8,8 +8,6 @@ So you can do awesome and delicious things like:
 
 ```haskell
 |
--- DMap for generic range input attributes
---
 import Data.Dependent.Map.Lens (dat)
 
 data MyDMap a where
@@ -20,7 +18,13 @@ data MyDMap a where
 ok = dat AString ?~ "Fred"
 
 -- This is a type error because of the constraints of our DMap that carry through to our lenses! Yay!
-no = dat AInt ?~ "33"
+no = dat AInt .~ "33"
+
+-- Type safe as `DMap` guarantees that our value at position of `AInt` is an Int and our lenses maintain that invariant.
+f = dix AInt %~ (+ 33)
+
+-- You could also code golf this to, if you're into such things.
+f = dix AInt +~ 33
 ```
 
 The functions and typeclasses are all a shameless imitation of their

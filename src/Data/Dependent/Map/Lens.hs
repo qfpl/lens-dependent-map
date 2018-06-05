@@ -40,6 +40,7 @@ class DIxed m where
 
   default dix :: (Applicative f, DAt m) => KeyF m v -> LensLike' f m (ValF m v)
   dix k = dat k . traverse
+  {-# INLINE dix #-}
 
 -- | 'DAt' provides a 'Lens' that can be used to read,
 -- write or delete the value associated with a key in a 'DMap'-like
@@ -60,12 +61,16 @@ instance (Functor f, GCompare k) => DIxed (DMap k f) where
 instance (Functor f, GCompare k) => DAt (DMap k f) where
   -- This is the way to do it, until `alterF` is merged into Data.Dependent.Map
   dat k f dm = f (DM.lookup k dm) <&> \v' -> DM.alter (const v') k dm
+  {-# INLINE dat #-}
 
 dsans :: DAt m => KeyF m v -> m -> m
 dsans k = dat k .~ Nothing
+{-# INLINE dsans #-}
 
 diat :: DAt m => KeyF m v -> IndexedLens' (KeyF m v) m (Maybe (ValF m v))
 diat k f = dat k (indexed f k)
+{-# INLINE diat #-}
 
 diix :: DIxed m => KeyF m v -> IndexedTraversal' (KeyF m v) m (ValF m v)
 diix k f = dix k (indexed f k)
+{-# INLINE diix #-}

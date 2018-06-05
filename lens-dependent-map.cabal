@@ -24,9 +24,9 @@ library
 
   exposed-modules:     Data.Dependent.Map.Lens
 
-  build-depends:       base >=4.9 && <=4.12
-                     , dependent-map > 0.2 && <= 0.3
-                     , lens >= 4.11 && <= 5
+  build-depends:       base >=4.7 && < 4.12
+                     , dependent-map >= 0.2 && < 0.3
+                     , lens >= 4.11 && < 5
 
   hs-source-dirs:      src
 

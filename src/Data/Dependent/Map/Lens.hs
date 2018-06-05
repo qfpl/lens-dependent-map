@@ -14,6 +14,7 @@ module Data.Dependent.Map.Lens
   , diix
   ) where
 
+import           Control.Applicative (Applicative)
 import           Control.Lens       (IndexedLens', IndexedTraversal', Lens',
                                      LensLike', Traversal', indexed, (.~),
                                      (<&>))

@@ -2,7 +2,7 @@ name:                lens-dependent-map
 version:             0.1.0
 synopsis:            Additional lens functions for Dependent Map structures
 description:
-  <<http://i.imgur.com/uZnp9ke.png>>
+  <<https://raw.githubusercontent.com/qfpl/assets/master/data61-transparent-bg.png>>
   .
   Provides some additional typeclasses and functions for working with Dependent Maps.
 license:             BSD3
